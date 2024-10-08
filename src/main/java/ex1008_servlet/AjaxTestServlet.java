@@ -15,7 +15,9 @@ public class AjaxTestServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //전송된 데이터 받기
         String name = req.getParameter("name");
+        String id = req.getParameter("id");
         System.out.println("name = " + name);
+        System.out.println("id = " + id);
 
         //서비스->dao->결과를 받아서
         //브라우저로 응답

@@ -16,7 +16,15 @@
                     url:"/ajaxCheck", //통신할 서버 주소
                     type:"get", //요청방식(get,post,put,delete,fetch) put & fetch 모두 업데이트지만 put 은 전체 업데이트, fetch 는 하나만 업데이트
                     dataType:"text", // 서버가 응댑해주는 데이터타입(text,html,xml,json)
-                    data:"name=희정", //서버에게 전송할 데이터(param 정보)
+
+                    // data:"name=희정&id=jang", //서버에게 전송할 데이터(param 정보)
+
+                    // data:{name:"나영",id:"king"}, // 2개 이상의 데이터 보내기, 위와 동일한 결과
+
+                    // data:{name:$("#name").val(),id:$("#id").val()}, // form 에서 입력 받은 데이터를 전송, 근데 이거는 게시판처럼 글이 많으면 안 좋음
+
+                    data : $("#f").serialize(),// 폼 안에 있는 모든 내용을 한 번에 전송한다
+
                     success:function(result){
                         $("#result").html(result);
                     },// 성공했을 때 콜백함수
@@ -30,7 +38,12 @@
 </head>
 <body>
 <h1> 비동기 통신 : jQuery 가 제공하는 ajax 함수 알아보기</h1>
-<button id="btn">클릭</button>
+<form id="f">
+    이름 : <input type="text" id="name" name="name"><br>
+    아이디 : <input type="text" id="id" name="id"><br>
+    <button id="btn" type="button">클릭</button>
+<!--    form 에서 버튼 쓰면 전송이 되는데 ajax 에서는 새로고침하면 안 된다-->
+</form>
 <hr>
 <div id="result"></div>
 
