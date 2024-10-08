@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(function () {
+            //버튼을 클릭하면 서버에 데이터를 요청해서 결과를 div 에 출력
+            $("#btn").click(function(){
+                //ajax 통신한다
+                $.ajax({
+                    url:"/ajaxCheck", //통신할 서버 주소
+                    type:"get", //요청방식(get,post,put,delete,fetch) put & fetch 모두 업데이트지만 put 은 전체 업데이트, fetch 는 하나만 업데이트
+                    dataType:"text", // 서버가 응댑해주는 데이터타입(text,html,xml,json)
+                    data:"name=희정", //서버에게 전송할 데이터(param 정보)
+                    success:function(result){
+                        $("#result").html(result);
+                    },// 성공했을 때 콜백함수
+                    error: function(err){
+
+                    }// 실패했을 때 콜백함수
+                });
+            });
+        })
+    </script>
+</head>
+<body>
+<h1> 비동기 통신 : jQuery 가 제공하는 ajax 함수 알아보기</h1>
+<button id="btn">클릭</button>
+<hr>
+<div id="result"></div>
+
+</body>
+</html>
