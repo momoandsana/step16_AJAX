@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(function () {
+            //a를 클릭하면 서버에 가상데이터(jsonplace)를 요청해서 결과를 div 에 출력
+            $("#send").click(function(){
+                //ajax 통신한다
+                $.ajax({
+                    url:"https://jsonplaceholder.typicode.com/users", //통신할 서버 주소
+                    type:"get", //요청방식(get,post,put,delete,fetch) put & fetch 모두 업데이트지만 put 은 전체 업데이트, fetch 는 하나만 업데이트
+                    dataType:"json", // 서버가 응댑해주는 데이터타입(text,html,xml,json)
+
+
+
+                    success:function(result){
+                        // console.log(result);
+                        $.each(result,function(index,item){
+                           // console.log(index+" = "+item);
+                           console.log(index+" = "+item.name+" |"+item.email+" | "+item.address.suite);
+                        });
+
+                    },// 성공했을 때 콜백함수
+                    error: function(err){
+
+                    }// 실패했을 때 콜백함수
+                });
+            });
+        })
+    </script>
+</head>
+<body>
+<h3>https://jsonplaceholder.typicode.com/</h3>
+<a href="#" id="send">데이터가져오기</a>
+<!--a태그에 # 있으면 이동하지 않는다-->
+<hr>
+<div id="result"></div>
+
+</body>
+</html>
