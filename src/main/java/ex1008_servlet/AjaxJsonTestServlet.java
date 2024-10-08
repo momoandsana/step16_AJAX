@@ -97,6 +97,8 @@ public class AjaxJsonTestServlet extends HttpServlet {
 
 	   PrintWriter out = response.getWriter();
 	   out.println(jsonArr);
+
+	   System.out.println("list jsonArr = " + jsonArr);
 	}
 	
 	/**
@@ -112,6 +114,7 @@ public class AjaxJsonTestServlet extends HttpServlet {
 	   list.add(new Member("jang", "장희정", 25, "서울"));
 	   list.add(new Member("1", "이름1", 25, "서울"));
 	   list.add(new Member("2", "이름2", 25, "서울"));
+
 	   map.put("memberList", list);
 
 	   Gson gson=new Gson();
@@ -119,6 +122,8 @@ public class AjaxJsonTestServlet extends HttpServlet {
 
 	   PrintWriter out = response.getWriter();
 	   out.println(jsonArr);
+
+	   System.out.println("map jsonArr = " + jsonArr);
 	}
 	
 	/**

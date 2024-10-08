@@ -91,13 +91,6 @@
                     {
                         console.log(result)
 
-                        let str="";
-                        $.each(result,function(index,menu){
-                            str+=`<input type='checkbox' value='${"${index}"}'>${"${menu}"}`;
-                            // el이 우선순위이기 때문에 jQuery 와 같이 $로 같이 쓰고 싶으면 이렇게 써야 함. was에서 el 먼저 해석
-                        });
-
-                        $("#display").html(str);
                     },// 성공했을 때 콜백함수
 
                     error: function(err)
@@ -117,15 +110,12 @@
 
                     success:function(result)
                     {
-                        console.log(result)
+                        console.log(result);
+                        $.each(result.memberList,function(index,member){
+                            console.log(member.name);
 
-                        let str="";
-                        $.each(result,function(index,menu){
-                            str+=`<input type='checkbox' value='${"${index}"}'>${"${menu}"}`;
-                            // el이 우선순위이기 때문에 jQuery 와 같이 $로 같이 쓰고 싶으면 이렇게 써야 함. was에서 el 먼저 해석
-                        });
+                        })
 
-                        $("#display").html(str);
                     },// 성공했을 때 콜백함수
 
                     error: function(err)
